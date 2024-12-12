@@ -9,7 +9,9 @@ int main()
 	stackType* stack = (stackType*)malloc(sizeof(stackType));
 	InitStack(stack);
 	//PrintParentheses(stack, UserInput());
-	PrintPostfix(stack, UserInput());
+
+	PrintInfixToPostfix(stack, UserInput());
+	//PrintPostfix(stack, UserInput());//input infix
 
 	FreeStack(stack);
 	free(stack);

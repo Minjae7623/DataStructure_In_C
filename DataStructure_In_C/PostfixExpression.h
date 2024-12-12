@@ -1,2 +1,5 @@
 #pragma once
-int Postfix(stackType* stack, char* str);
+int PostfixExpress(stackType* stack, char* str);
+int priority(char op);
+char* TransInfixToPostfix(stackType* stack, char* str);
+

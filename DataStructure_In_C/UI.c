@@ -19,7 +19,12 @@ void PrintParentheses(stackType* stack, char* str)
 		printf("result: fail...");
 }
 
+void PrintInfixToPostfix(stackType* stack, char* str)
+{
+	printf("infix [%s] postfix [%s] \n", str, TransInfixToPostfix(stack, str));
+}
+
 void PrintPostfix(stackType* stack, char* str)
 {
-	printf("%s = %d", str, Postfix(stack, str));
+	printf("%s = %d \n", str, PostfixExpress(stack, str));
 }

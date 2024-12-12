@@ -1,46 +1,57 @@
 #include<stdio.h>
 #include"stack.h"
 
-//int Postfix(stackType* stack, char* str)
-//{
-//	int result = 0, tmp = 0;
-//	char op = 0;
-//
-//	for (int i = 0; str[i] != '\0'; i++)
-//	{
-//		op = str[i];
-//
-//		switch (op)
-//		{
-//		case '*':
-//			result = Pop(stack) * Pop(stack);
-//			Push(stack, result);
-//			break;
-//		case '/':
-//			tmp = Pop(stack);
-//			result = Pop(stack) / tmp;
-//			Push(stack, result);
-//			break;
-//		case '+':
-//			result = Pop(stack) + Pop(stack);
-//			Push(stack, result);
-//			break;
-//		case '-':
-//			tmp = Pop(stack);
-//			result = Pop(stack) - tmp;
-//			Push(stack, result);
-//			break;
-//		default:
-//			Push(stack, op - '0');
-//		}
-//	}
-//
-//	return Pop(stack);
-//}
+int priority(char op)
+{
+	return (op == '*' || op == '/') ? 2 :
+		(op == '+' || op == '-') ? 1 : 0;
+}
 
-//improve
+char* TransInfixToPostfix(stackType* stack, char* str)
+{
+	static char postfix[32];
+	char op = 0;
+	int j = 0;
 
-int Postfix(stackType* stack, char* str) 
+	for (int i = 0; str[i] != '\0'; i++)
+	{
+		op = str[i];
+
+		switch (op)
+		{
+		case '(':
+			Push(stack, op);
+			break;
+		case ')':
+			while (Peek(stack) != '(')
+				postfix[j++] = Pop(stack);
+			Pop(stack); //'(' pop.
+			break;
+		case '*':
+		case '/':
+		case '+':
+		case '-':
+			while (!IsEmpty(stack) && priority(Peek(stack)) >= priority(op))
+			{
+				postfix[j++] = Pop(stack);
+			}
+			Push(stack, op);
+			break;
+			//operand
+		default:
+			postfix[j++] = op;
+		}
+	}
+
+	while (!IsEmpty(stack))
+		postfix[j++] = Pop(stack);
+
+	postfix[j] = '\0';
+
+	return postfix;
+}
+
+int PostfixExpress(stackType* stack, char* str)
 {
 	int result = 0, operand1, operand2;
 	char op = 0;
@@ -59,9 +70,9 @@ int Postfix(stackType* stack, char* str)
 			operand1 = Pop(stack);
 
 			result = (op == '*') ? operand1 * operand2 :
-					 (op == '/') ? operand1 / operand2 :
-					 (op == '+') ? operand1 + operand2 :
-								   operand1 - operand2;
+				(op == '/') ? operand1 / operand2 :
+				(op == '+') ? operand1 + operand2 :
+				operand1 - operand2;
 
 			Push(stack, result);
 			break;

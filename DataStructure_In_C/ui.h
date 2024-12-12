@@ -3,3 +3,4 @@
 char* UserInput();
 void PrintParentheses(stackType* stack, char* str);
 void PrintPostfix(stackType* stack, char* str);
+void PrintInfixToPostfix(stackType* stack, char* str);
