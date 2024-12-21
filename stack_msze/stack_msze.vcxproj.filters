@@ -15,40 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ui.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="stack.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="PostfixExpression.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Parentheses.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="maze.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="stack.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="ui.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Parentheses.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="PostfixExpression.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="maze.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
